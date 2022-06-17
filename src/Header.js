@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import {Link} from "react-router-dom";
 const Header = () =>{
     // set state for today's date
     const [date, setdate]= useState (['']);
@@ -13,9 +14,22 @@ const Header = () =>{
     },[])
     return(
         <header>
-            <h1>The <span className="daily-span">Daily</span></h1>
-    
-            <h3>{date[0]}  <span className="date-span">{date[1]}</span></h3>
+            <div className="header-nav wrapper">
+                <nav>
+                    <ul>
+                        <li>
+                            Home
+                        </li>
+                        <li>
+                            My Reads
+                        </li>
+                    </ul>
+                </nav>
+                <div className="heading-container">
+                    <h1>The <span className="daily-span">Daily</span></h1>
+                    <h2>{date[0]}  <span className="date-span">{date[1]}</span></h2>
+                </div>
+            </div>
         </header>
     )
 }

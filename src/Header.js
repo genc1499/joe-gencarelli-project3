@@ -26,7 +26,7 @@ const Header = (props) =>{
             <div className="header-nav wrapper">
                 <nav>
                     <ul>
-                        <li> My reads
+                        <li> My <span className="nav-span">reads</span>
                             <div className="total-articles">
                                 {props.itemsInList}
                             </div>

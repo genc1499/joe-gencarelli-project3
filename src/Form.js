@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Form = (props)=>{
 
     // set state for the user's input
-    const [userInput, setUserInput]=useState('');
+    const [userInput, setUserInput]=useState('top');
 
     // set state for keyword search input
     const [keyWord, setKeyWord] = useState ('');
@@ -23,7 +23,8 @@ const Form = (props)=>{
         console.log(e);
         const querySearch =e.target.value;
         setKeyWord(querySearch);
-        console.log(keyWord);  
+        console.log(keyWord);
+        
     }
 
     // Function that will take the user's query and set the userInput state, passing this value to the passWord function in App.js
@@ -42,14 +43,17 @@ const Form = (props)=>{
     return(
         <div className="form-wrapper">
             <form onSubmit = {handleSubmit} className="categories wrapperForm">
+             
                 <button className ="form-buttons" value ="business" onClick = {handleClick}>Business</button>
                 <button className ="form-buttons" value ="politics" onClick = {handleClick}>Politics</button>
                 <button className ="form-buttons" value ="technology" onClick = {handleClick}>Technology</button>
                 <button className ="form-buttons" value ="entertainment" onClick = {handleClick}>Entertainment</button>
                 <button className ="form-buttons" value ="sports" onClick = {handleClick}>Sports</button>
                 <button className ="form-buttons" value ="science" onClick = {handleClick}>Science</button>
+         
                 <input onChange = {handleChange} value={keyWord} type='text' placeholder=" 'internet explorer' "/>
                 <button  className="search-button">Search</button>
+             
             </form>
         </div>
     )

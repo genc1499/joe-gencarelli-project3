@@ -38,6 +38,7 @@ const  [saved, setSaved]=useState({});
     return(
         <section>
             < div className="wrapper">
+                <h2 className="gallery-heading" >Top Stories</h2>
                 <ul className = "article-list">
                     {
                         // map through the props and return the list of articles to be displayed
@@ -52,17 +53,17 @@ const  [saved, setSaved]=useState({});
                                     {
                                     item.urlToImage
                                     ?
-                                    <img src={item.urlToImage} alt={item.title}/>
+                                    <a href={item.url}><img src={item.urlToImage} alt={item.title}/></a>
                                     :
                                     
-                                    <img src= {image}/>
+                                    <a href={item.url}><img src={image} alt={item.title}/></a>
 
                                     }
                                     
                                 </div>
                                 
                                 <div className="read-options">
-                                    <a className = "read-me" href={item.url}>Read Now</a>
+                                    
 
                                     {/* This function will handle the click that let's the user add an article to their list */}
                                     <button onClick={handleClick}className= "read-after">Read Later</button>

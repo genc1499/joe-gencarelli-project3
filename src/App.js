@@ -25,26 +25,32 @@ function App() {
   const [totalArticles, setTotalArticles]=useState('');
 
   useEffect(()=>{
-    // First axios call will set the top stories as default for when the user arrives
-    axios({  
-      url:'https://newsapi.org/v2/top-headlines',
-      params:{
-        apiKey:`3363e4832d3b405bb63c8f7d36bed089`,
-        // apiKey:`f0bc24af32704001825c36b936a00399`,
-        country:'us',
-        category:'top'  
-      }
-    })
-    .then((response)=>{
-      setArticles(response.data.articles);
-      console.log(response.data.articles);
-    })
+    // This axios call will return articles based off the user's selected category
+ 
+    
+      axios({  
+        url:'https://newsapi.org/v2/top-headlines',
+        params:{
+          apiKey:`3363e4832d3b405bb63c8f7d36bed089`,
+          // apiKey:`f0bc24af32704001825c36b936a00399`,
+          country:'us',
+          category:'top'
+        }
+      })
+      .then((response)=>{
+     
+        setArticles(response.data.articles);
+        console.log(articles);
+      })
+    
 
-  },[])
-  
+
+},[])
 // useEffect for when the user makes a selection triggering the paramters state to change
   useEffect(()=>{
     // This axios call will return articles based off the user's selected category
+ 
+    
       axios({  
         url:'https://newsapi.org/v2/top-headlines',
         params:{
@@ -55,10 +61,13 @@ function App() {
         }
       })
       .then((response)=>{
+     
         setArticles(response.data.articles);
-        console.log(response.data.articles);
+        console.log(articles);
       })
     
+
+
 },[userParam])
 
 useEffect(()=>{
@@ -68,7 +77,7 @@ useEffect(()=>{
       url:'https://newsapi.org/v2/everything',
       params:{
         apiKey:`3363e4832d3b405bb63c8f7d36bed089`,
-        apiKey:`f0bc24af32704001825c36b936a00399`,
+        // apiKey:`f0bc24af32704001825c36b936a00399`,
         language:'en',
         q:keyword,
         sortBy:'publishedAt'
@@ -76,7 +85,7 @@ useEffect(()=>{
     })
     .then((response)=>{
       setArticles(response.data.articles);
-      console.log(response.data.articles);
+      console.log(articles);
     }) 
     // .catch(error => {
     //   alert("No articles for this search!");
@@ -101,6 +110,8 @@ useEffect(()=>{
   // state props will then be sent to header to render this number
 
   const getTotalArticles=(total)=>{
+
+    // Convert total to string so state can set
     const modTotal = total.toString();
     setTotalArticles(modTotal);
     

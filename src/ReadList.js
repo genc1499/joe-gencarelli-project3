@@ -76,11 +76,9 @@ const ReadList = (props) =>{
                                     }
                                     <h3 >{item.title}</h3>
                                     <div className="image-container">
-                                        <img src={item.imageSource}/>
+                                        <a href={item.url}><img src={item.imageSource} alt={item.title}/></a> 
                                     </div>
                                     <div className="read-options">
-                                        <a href={item.url}>Read Me</a>
-
                                         {/* HandleRemove function will allow the user to remove whatever articles they wish to, stored in their list */}
                                         <button onClick={ ()=>handleRemove(item.key)}className= "read-after">Remove</button>
                                     </div>

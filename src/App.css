@@ -23,6 +23,10 @@ ul{
   list-style:none;
 }
 
+a{
+  text-decoration: none;
+}
+
 .daily-span{
   display:block;
 }
@@ -75,6 +79,9 @@ h3{
 /* Nav section */
 .nav-span{
   display:block;
+}
+nav{
+  margin-top: 12px;
 }
 
 nav ul{
@@ -211,11 +218,6 @@ img{
   text-align:center;
 }
 
-.form-buttons{
-  display:flex;
-}
-
-
 .form-buttons:hover, .form-button:focus, .search-button:hover, .search-button:focus{
   background-color: #48484e;
 }
@@ -268,14 +270,40 @@ input{
   }
 }
 
+/* Footer Styles */
+footer{
+  background-color:rgb(219, 84, 84);
+  padding:20px 0;
+  
+}
+
+footer p{
+  margin:0 auto;
+  text-align:center;
+  font-size:1rem;
+  font-family:'Varela Round', sans-serif; 
+  color:#28282b;
+}
+
+footer a{
+  color:#28282b;
+}
+.footer-span{
+  font-weight:bold;
+}
+
 @media screen and (max-width: 378px){
   .header-nav{
     justify-content:flex-end;
   }
 
   nav ul li{
-    right: 46px;
+    right: 62px;
     font-style: bold;
     top: 158px;
+  }
+
+  nav{
+    margin-top:0;
   }
 }

@@ -3,6 +3,7 @@ import Header from "./Header.js";
 import Form from "./Form.js";
 import ArticleGallery from "./ArticleGallery";
 import ReadList from './ReadList.js';
+import Footer from './Footer.js';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import firebase from "./firebase.js";
@@ -128,6 +129,8 @@ useEffect(()=>{
         <ArticleGallery article={articles}  />
         {/* Prop function that will get the number of articles in read list */}
        <ReadList passTotal = {getTotalArticles}/> 
+
+       <Footer/>
       
     </>
   );

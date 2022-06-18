@@ -4,8 +4,11 @@ import {Link} from "react-router-dom";
 const Header = (props) =>{
     // set state for today's date
     const [date, setdate]= useState (['']);
+
+    // Get todays date
     const newDate = new Date();
 
+    // Get month and day from new Date
     const month = newDate.toLocaleString("en-US", { month: "short" })
     const day = newDate.getDate();
 
@@ -15,7 +18,11 @@ const Header = (props) =>{
     },[])
 
     return(
+   
         <header>
+            {
+                <div className="close"></div>
+            }
             <div className="header-nav wrapper">
                 <nav>
                     <ul>

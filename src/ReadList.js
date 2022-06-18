@@ -70,11 +70,11 @@ const ReadList = (props) =>{
                         savedArticles.map((item, index)=>{
                             return(
                             
-                                <li key={index}>
+                                <li key={item.key}>
                                     {
                                         console.log("this key", item.key)
                                     }
-                                    <h3>{item.title}</h3>
+                                    <h3 >{item.title}</h3>
                                     <div className="image-container">
                                         <img src={item.imageSource}/>
                                     </div>

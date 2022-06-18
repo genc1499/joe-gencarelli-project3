@@ -18,10 +18,10 @@ const Header = () =>{
                 <nav>
                     <ul>
                         <li>
-                            Home
+                        <Link to = "/read-list">MyReads</Link>
                         </li>
                         <li>
-                            My Reads
+                        <Link to = "/home">Home</Link>
                         </li>
                     </ul>
                 </nav>

@@ -74,7 +74,7 @@ nav ul li{
 img{
   display:block;
   width:100%;
-  object-fit:contain;
+  object-fit:scale-down;
   border-radius:5px;
 }
 .wrapper{
@@ -139,10 +139,17 @@ img{
 
 /* Form component styles */
 
+.form-wrapper{
+  width:100vw;
+
+  margin:0 auto;
+}
+
 .categories{
   display:flex;
   margin-bottom:5%;
   background-color: #28282B;
+
 }
 
 .form-buttons, .search-button{
@@ -155,6 +162,7 @@ img{
   flex-grow:1;
   transition:.4s ease;
 }
+
 
 .form-buttons:hover, .form-button:focus, .search-button:hover, .search-button:focus{
   background-color: #48484e;

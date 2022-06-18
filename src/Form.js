@@ -17,31 +17,40 @@ const Form = (props)=>{
         console.log(userInput);
     }
 
+    // Function that will get the user's query and set the state of keyword with that query
     const handleChange=(e)=>{
         e.preventDefault();
-        setKeyWord(e.target.value)
-        console.log(keyWord);
+        console.log(e);
+        const querySearch =e.target.value;
+        setKeyWord(querySearch);
+        console.log(keyWord);  
     }
 
+    // Function that will take the user's query and set the userInput state, passing this value to the passWord function in App.js
     const handleSubmit = (e) =>{
         e.preventDefault();
+        if(keyWord!==""){
         setUserInput(keyWord);
-        props.passClick(userInput);
-     
-
+        props.passWord(userInput);
+        }
+        else{
+            alert("Please enter at least one word!");
+        }
+        
     }
+
     return(
         <div className="form-wrapper">
-        <form onSubmit = {handleSubmit} className="categories wrapperForm">
-            <button className ="form-buttons" value ="business" onClick = {handleClick}>Business</button>
-            <button className ="form-buttons" value ="politics" onClick = {handleClick}>Politics</button>
-            <button className ="form-buttons" value ="technology" onClick = {handleClick}>Technology</button>
-            <button className ="form-buttons" value ="entertainment" onClick = {handleClick}>Entertainment</button>
-            <button className ="form-buttons" value ="sports" onClick = {handleClick}>Sports</button>
-            <button className ="form-buttons" value ="science" onClick = {handleClick}>Science</button>
-            <input onChange = {handleChange} value={keyWord} type='text' placeholder=" 'internet explorer' "/>
-            <button  className="search-button">Search</button>
-        </form>
+            <form onSubmit = {handleSubmit} className="categories wrapperForm">
+                <button className ="form-buttons" value ="business" onClick = {handleClick}>Business</button>
+                <button className ="form-buttons" value ="politics" onClick = {handleClick}>Politics</button>
+                <button className ="form-buttons" value ="technology" onClick = {handleClick}>Technology</button>
+                <button className ="form-buttons" value ="entertainment" onClick = {handleClick}>Entertainment</button>
+                <button className ="form-buttons" value ="sports" onClick = {handleClick}>Sports</button>
+                <button className ="form-buttons" value ="science" onClick = {handleClick}>Science</button>
+                <input onChange = {handleChange} value={keyWord} type='text' placeholder=" 'internet explorer' "/>
+                <button  className="search-button">Search</button>
+            </form>
         </div>
     )
 }

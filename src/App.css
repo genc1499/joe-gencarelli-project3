@@ -11,6 +11,8 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 @import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
 @import url('https://fonts.googleapis.com/css?family=Nordica+Text');
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
+@import url('https://fonts.googleapis.com/css?family=Copse+Serif');
+
 
 /* Header styles */
 
@@ -29,23 +31,27 @@ a{
 
 .daily-span{
   display:block;
+  margin-top: -25px;
 }
 
 header{
-  background-color:rgb(219, 84, 84);
+  background-color:rgb(94, 22, 22);
   width:100vw;
   height: 237px;
   margin-top:5%;
   position:relative;
   z-index:-10;
+  background-image: linear-gradient(rgb(94, 22, 22), rgb(172, 42, 42));
+
 }
 
+
 .earth-image{
-  position:absolute;
+  position: absolute;
   top: 19px;
-  left: 122px;
-  z-index:-1;
-  width:67%;
+  left: 148px;
+  z-index: -1;
+  width: 76%;
 }
 .heading-container{
   display:flex;
@@ -53,12 +59,14 @@ header{
   justify-content: space-between;
   flex-direction: column;
   position:relative;
+  margin-top: 21px;
 }
 
 h1{
   font-size:4.2rem;
-  font-family: 'Permanent Marker', cursive;
+  font-family: 'Copse', serif;
   margin:0;
+  font-weight:bolder;
 }
 
 h2{
@@ -127,7 +135,7 @@ img{
 
 .gallery-heading{
   font-size:2.3rem;
-  font-family: 'Permanent Marker', cursive;
+  font-family: 'Copse', serif;
   color:#28282B;
   opacity:.8;
   margin-bottom:3%;
@@ -137,7 +145,7 @@ img{
   display:flex;
   flex-wrap:wrap;
   justify-content: space-evenly;
-  background-color:rgb(212, 233, 244);
+  background-color:rgb(234, 242, 246);
   border-radius:5px;
   padding:40px 20px;
 }
@@ -164,6 +172,7 @@ img{
   text-decoration: none;
   border-radius:5px;
   background-color:rgb(13, 143, 237);
+  background-image: linear-gradient(rgb(13, 143, 237), rgb(49, 69, 83));
   color:white;
   text-align:center;
   width:150px;
@@ -216,7 +225,14 @@ img{
   flex-grow:1;
   transition:.4s ease;
   text-align:center;
+  background-image: linear-gradient(#28282b,#57575b);
+  border-radius:5px;
+  font-family: 'Varela Round', sans-serif;
 }
+.form-buttons:hover{
+	background: linear-gradient(#49494d,#86868a);
+}
+
 
 .form-buttons:hover, .form-button:focus, .search-button:hover, .search-button:focus{
   background-color: #48484e;
@@ -237,6 +253,18 @@ input{
   font-size:.9rem;
   opacity:.5;
   margin-left:5px;
+}
+
+/* Slide out menu */
+.open{
+  width:100vw;
+  height:100vh;
+  transition:.3s ease-in;
+}
+
+.closed{
+  width:0;
+  height:0;
 }
 
 /* MEDIA QUERIES */

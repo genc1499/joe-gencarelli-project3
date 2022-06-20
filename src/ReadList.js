@@ -33,7 +33,7 @@ const ReadList = (props) =>{
         // Using a for in loop:
         // push the object properties + the key property (equal to the object's firebase code)
         for(let article in data){
-            const ob = {key:article, title:data[article].title, url:data[article].url, imageSource:data[article].imageSrc}
+            const ob = {key:article, title:data[article].title, url:data[article].url, imageSrc:data[article].imageSrc}
             count+=1;
             // push each object to the 'list' array
             list.push(ob);
@@ -61,9 +61,11 @@ const ReadList = (props) =>{
 
     
    return(
+       
         <section>
+           
             <div className = "wrapper">
-                <h2>Your Read List</h2>
+                <h2 className="gallery-heading">Your Read List</h2>
                 <ul className = "article-list">
                     {
                         // Map through the state of articles saved and return them for rendering
@@ -76,7 +78,7 @@ const ReadList = (props) =>{
                                     }
                                     <h3 >{item.title}</h3>
                                     <div className="image-container">
-                                        <a href={item.url}><img src={item.imageSource} alt={item.title}/></a> 
+                                        <a href={item.url}><img src={item.imageSrc} alt={item.title}/></a> 
                                     </div>
                                     <div className="read-options">
                                         {/* HandleRemove function will allow the user to remove whatever articles they wish to, stored in their list */}
@@ -88,6 +90,7 @@ const ReadList = (props) =>{
                     }
                 </ul>
             </div>
+          
         </section>
    )
 }

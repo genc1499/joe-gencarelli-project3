@@ -1,9 +1,11 @@
-import image from "./assets/earth-modified.png";
+import image from "./assets/globe-modified.png";
 import {useState, useEffect} from 'react';
 import {Link} from "react-router-dom";
 const Header = (props) =>{
     // set state for today's date
     const [date, setdate]= useState (['']);
+
+    const [menu, setMenu]=useState(false);
 
     // Get todays date
     const newDate = new Date();
@@ -17,25 +19,41 @@ const Header = (props) =>{
         setdate([month,day])
     },[])
 
+
+
+    const handleClick = (e)=>{
+       console.log(e)
+        if (menu===true){
+            setMenu(false)
+            props.getMenu(menu);
+        }
+        else{
+            setMenu(true)
+            props.getMenu(menu);
+        }
+ 
+    }
+   
+    
     return(
    
         <header>
-            {
-                <div className="close"></div>
-            }
+         
             <div className="header-nav wrapper">
                 <nav>
                     <ul>
+                    
                         <li> My <span className="nav-span">reads</span>
                             <div className="total-articles">
                                 {props.itemsInList}
                             </div>
+                           
                         </li>
                    
                     </ul>
                 </nav>
                 <div className="heading-container">
-                    <h1>The <span className="daily-span">Daily</span></h1>
+                    <h1>Your <span className="daily-span">Extra</span></h1>
                     <h2>{date[0]}  <span className="date-span">{date[1]}</span></h2>
                     <div className="earth-image">
                         <img src={image} alt="Cartoon image of Earth"/>

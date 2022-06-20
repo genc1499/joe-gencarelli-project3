@@ -7,34 +7,41 @@ const ArticleGallery = (props)=>{
 const  [saved, setSaved]=useState({});
 
   
-
+    // Function to handle the click event and retrieve the properties for image, url and title
     const handleClick=(e)=>{
         console.log(e);
+        console.log();
 
-        // url property
-        const link= e.target.previousElementSibling.href;
-        // image property
-        const imageSource=e.target.parentElement.previousSibling.firstChild.src;
+        // Image Source
+        const source =e.target.parentElement.previousSibling.firstChild.innerHTML;
+
+        //Slice image source
+        const newSource = source.slice(
+        source.indexOf('=') + 2,
+        source.lastIndexOf('alt')- 2,);
+
+         // url property  
+        const link= e.target.parentElement.previousSibling.firstChild.href;
+      
+            console.log(newSource);
         // h3 property 
         const articleTitle=e.target.parentElement.previousSibling.previousSibling.innerText;
         const database=getDatabase(firebase);
         const dbRef=ref(database);
 
-        // The opject properties to add to firebase
+        // The object properties to add to firebase
         const articleObject={
             title:articleTitle,
             url:link,
-            imageSrc:imageSource,
+            imageSrc:newSource
         }
 
-        // Set state and push the object
+        // Set state and push to firebase
         setSaved(articleObject);
         push(dbRef, articleObject);
         
     }
    
-    
-    
     return(
         <section>
             < div className="wrapper">
@@ -45,28 +52,24 @@ const  [saved, setSaved]=useState({});
                         props.article.map((item, index)=>{
                     
                             return(
-                            <li key={index}>
+                            <li key={item.publishedAt}>
                                 <h3>{item.title}</h3>
-                                <div className="image-container">
 
+                                <div className="image-container">
                                     {/* If there is no image, add a palceholder image from the assets folder */}
                                     {
-                                    item.urlToImage
-                                    ?
-                                    <a href={item.url}><img src={item.urlToImage} alt={item.title}/></a>
-                                    :
-                                    
-                                    <a href={item.url}><img src={image} alt={item.title}/></a>
-
-                                    }
-                                    
+                                        item.urlToImage
+                                        ?
+                                        <a href={item.url}><img src={item.urlToImage} alt={item.title}/></a>
+                                        :
+                                        <a href={item.url}><img src={image} alt={item.title}/></a>
+                                    } 
                                 </div>
                                 
                                 <div className="read-options">
-                                    
-
                                     {/* This function will handle the click that let's the user add an article to their list */}
                                     <button onClick={handleClick}className= "read-after">Read Later</button>
+
                                 </div>
                             </li>
                             )

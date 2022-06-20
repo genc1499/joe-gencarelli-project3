@@ -1,15 +1,14 @@
 import {useState} from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Form = (props)=>{
 
     // set state for the user's input
-    const [userInput, setUserInput]=useState('top');
+    const [userInput, setUserInput]=useState('');
 
-    // set state for keyword search input
+    // set state for the user's keyword search 
     const [keyWord, setKeyWord] = useState ('');
-    // function that will handle the click event and set state for the user's input
 
+    // function that will handle the click event and set state for the user's input
     const handleClick = (e)=>{
         e.preventDefault();
         setUserInput(e.target.value);
@@ -23,25 +22,25 @@ const Form = (props)=>{
         console.log(e);
         const querySearch =e.target.value;
         setKeyWord(querySearch);
-        console.log(keyWord);
-        
+        console.log(keyWord);    
     }
 
     // Function that will take the user's query and set the userInput state, passing this value to the passWord function in App.js
     const handleSubmit = (e) =>{
         e.preventDefault();
         if(keyWord!==""){
-        setUserInput(keyWord);
-        props.passWord(userInput);
+            setUserInput(keyWord);
+            props.passWord(userInput);
         }
         else{
-            alert("Please enter at least one word!");
-        }
-        
+            // Error handling when the user submits with no query
+            alert("Please enter something to search!");
+        }    
     }
 
     return(
         <div className="form-wrapper">
+
             <form onSubmit = {handleSubmit} className="categories wrapperForm">
              
                 <button className ="form-buttons" value ="business" onClick = {handleClick}>Business</button>
@@ -50,7 +49,6 @@ const Form = (props)=>{
                 <button className ="form-buttons" value ="entertainment" onClick = {handleClick}>Entertainment</button>
                 <button className ="form-buttons" value ="sports" onClick = {handleClick}>Sports</button>
                 <button className ="form-buttons" value ="science" onClick = {handleClick}>Science</button>
-         
                 <input onChange = {handleChange} value={keyWord} type='text' placeholder=" 'internet explorer' "/>
                 <button  className="search-button">Search</button>
              

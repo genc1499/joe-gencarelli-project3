@@ -25,74 +25,67 @@ function App() {
   // Set State for total number of articles saved in read list
   const [totalArticles, setTotalArticles]=useState('');
 
+  const [menu, setMenu]=useState();
+
   useEffect(()=>{
     // This axios call will return articles based off the user's selected category
- 
-    
       axios({  
         url:'https://newsapi.org/v2/top-headlines',
         params:{
-          apiKey:`3363e4832d3b405bb63c8f7d36bed089`,
+          // apiKey:`3363e4832d3b405bb63c8f7d36bed089`,
           // apiKey:`f0bc24af32704001825c36b936a00399`,
+          apiKey:`003c61e24d984980b28d21992dec6d0f`,
           country:'us',
           category:'top'
         }
       })
       .then((response)=>{
-     
         setArticles(response.data.articles);
         console.log(articles);
       })
-    
-
-
 },[])
-// useEffect for when the user makes a selection triggering the paramters state to change
+//useEffect for when the user makes a selection triggering the paramters state to change
   useEffect(()=>{
     // This axios call will return articles based off the user's selected category
- 
-    
       axios({  
         url:'https://newsapi.org/v2/top-headlines',
         params:{
-          apiKey:`3363e4832d3b405bb63c8f7d36bed089`,
+          // apiKey:`3363e4832d3b405bb63c8f7d36bed089`,
           // apiKey:`f0bc24af32704001825c36b936a00399`,
+          apiKey:`003c61e24d984980b28d21992dec6d0f`,
           country:'us',
           category:userParam
         }
       })
       .then((response)=>{
-     
         setArticles(response.data.articles);
         console.log(articles);
       })
-    
-
-
 },[userParam])
+console.log(articles);
 
-useEffect(()=>{
-  // This axios call uses different paramters than category searching
-  // This call is made by a change in the keyword state
-    axios({  
-      url:'https://newsapi.org/v2/everything',
-      params:{
-        apiKey:`3363e4832d3b405bb63c8f7d36bed089`,
-        // apiKey:`f0bc24af32704001825c36b936a00399`,
-        language:'en',
-        q:keyword,
-        sortBy:'publishedAt'
-      }
-    })
-    .then((response)=>{
-      setArticles(response.data.articles);
-      console.log(articles);
-    }) 
-    // .catch(error => {
-    //   alert("No articles for this search!");
-    // })
+// useEffect(()=>{
+//   // This axios call uses different paramters than category searching
+//   // This call is made by a change in the keyword state
+//     axios({  
+//       url:'https://newsapi.org/v2/everything',
+//       params:{
+//         apiKey:`3363e4832d3b405bb63c8f7d36bed089`,
+//         // apiKey:`f0bc24af32704001825c36b936a00399`,
+//         language:'en',
+//         q:keyword,
+//         sortBy:'publishedAt'
+//       }
+//     })
+//     .then((response)=>{
+//       setArticles(response.data.articles);
+//       console.log(articles);
+//     }) 
+//     // .catch(error => {
+//     //   alert("No articles for this search!");
+//     // })
   
-  },[keyword])
+//   },[keyword])
   
 
 
@@ -118,17 +111,27 @@ useEffect(()=>{
     
   }
 
+  // const displayMenu=(menuStatus)=>{
+ 
+  //   setMenu(menuStatus);
+  //   console.log(menuStatus)
+  //   getMenu={displayMenu} 
+  // }
+
 
   return (
     <>
         {/* State props passed to Header to render total number of articles in read list */}
-        <Header itemsInList={totalArticles} />
+        <Header itemsInList={totalArticles}/> 
         {/* Functions passed as props: i. to get the category || ii. to get the query */}
         <Form passClick={getParameters} passWord = {getKeyWord}/>
         {/* Articles in state passed as props to be rendered */}
         <ArticleGallery article={articles}  />
         {/* Prop function that will get the number of articles in read list */}
-       <ReadList passTotal = {getTotalArticles}/> 
+
+        
+         <ReadList passTotal = {getTotalArticles} menu={menu}/> 
+        
 
        <Footer/>
       

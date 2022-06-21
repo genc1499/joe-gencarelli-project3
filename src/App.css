@@ -8,11 +8,10 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
-@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
-@import url('https://fonts.googleapis.com/css?family=Nordica+Text');
-@import url('https://fonts.googleapis.com/css?family=Varela+Round');
-@import url('https://fonts.googleapis.com/css?family=Copse+Serif');
 
+/* @import url('https://fonts.googleapis.com/css?family=Varela+Round');
+@import url('https://fonts.googleapis.com/css?family=Copse+Serif');
+@import url('https://fonts.googleapis.com/css?family=Kdam+Thmor+Pro'); */
 
 /* Header styles */
 
@@ -48,8 +47,8 @@ header{
 
 .earth-image{
   position: absolute;
-  top: 19px;
-  left: 148px;
+  top: -11px;
+  left: 149px;
   z-index: 10;
   width: 76%;
 }
@@ -127,6 +126,21 @@ nav a{
 
 }
 
+.back-to-news{
+  width: 202px;
+  padding: 7px;
+  padding: 8px 10px;
+  text-align: center;
+  border-radius: 23px;
+  background-color: #28282b;
+  background-image: linear-gradient(#28282b,#75757a);
+  margin:30px 0;
+}
+
+.back-to-news a{
+  color:whitesmoke;
+}
+
 /* ArticleGallery section */
 img{
   display:block;
@@ -146,6 +160,7 @@ img{
   color:#28282B;
   opacity:.8;
   margin-bottom:3%;
+  margin-top: -2%;
 }
 
 .article-list{
@@ -242,6 +257,7 @@ img{
   border-radius:5px;
   font-family: 'Varela Round', sans-serif;
 }
+
 .form-buttons:hover{
 	background: linear-gradient(#49494d,#86868a);
 }

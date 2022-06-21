@@ -83,11 +83,9 @@ useEffect(()=>{
       setArticles(response.data.articles);
       console.log(articles);
     }) 
-    // .catch(error => {
-    //   alert("No articles for this search!");
-    // })
+   
   }
-  },[keyword])
+},[keyword])
   
 
 
@@ -119,13 +117,20 @@ useEffect(()=>{
     
     <Routes>
       {/* Route that renders the header, article gallery and footer */}
-      <Route path ="/" element = {<> <Header itemsInList={totalArticles}/> <Form passClick={getParameters} passWord = {getKeyWord}/> <ArticleGallery article={articles} /> 
-      <TotalArticle passTotal = {getTotalArticles} /> <Footer/></> }/>
+      <Route path ="/" element = {
+        <> <Header itemsInList={totalArticles}/> 
+        <Form passClick={getParameters} passWord = {getKeyWord}/> 
+        <ArticleGallery article={articles} /> 
+        <TotalArticle passTotal = {getTotalArticles} /> 
+        <Footer/> </> }/>
 
       {/* Route that renders the header, readlist and footer */}
-      <Route path ="/myreads" element={<><Header itemsInList={totalArticles}/> <ReadList  menu={menu}/> 
-      <TotalArticle passTotal = {getTotalArticles} /><Footer/></> }/> 
-      
+      <Route path ="/myreads" element=
+        {<><Header itemsInList={totalArticles}/> 
+        <ReadList  menu={menu}/> 
+        <TotalArticle passTotal = {getTotalArticles} />
+        <Footer/></> }/> 
+        
     </Routes>
       
     </>

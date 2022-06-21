@@ -27,9 +27,9 @@ const ReadList = (props) =>{
             // Using a for in loop:
             // push the object properties + the key property (equal to the object's firebase code)
             for(let article in data){
-                const ob = {key:article, title:data[article].title, url:data[article].url, imageSrc:data[article].imageSrc}
+                const articleObject = {key:article, title:data[article].title, url:data[article].url, imageSrc:data[article].imageSrc}
             
-                list.push(ob);
+                list.push(articleObject);
                 
                 }
             
@@ -58,14 +58,12 @@ const ReadList = (props) =>{
                 {/* Link back to home  page */}
                 <h3 className= "back-to-news"> <Link to ="/" >Back to News</Link></h3>
 
-                <h2 className="gallery-heading">Your Read List</h2>
-                
                 <ul className = "article-list">
                     {
 
                     // Check if any articles havebeen added
                     // If not, display message below
-                    
+
                       savedArticles.length===0?
                       <h3 className="empty-list-heading">Nothing here yet!</h3>
                       :

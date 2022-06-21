@@ -50,7 +50,7 @@ const Form = (props)=>{
                 <button className ="form-buttons" value ="sports" onClick = {handleClick}>Sports</button>
                 <button className ="form-buttons" value ="science" onClick = {handleClick}>Science</button>
 
-                <label for='query'></label>
+                <label htmlFor='query'></label>
                 <input onChange = {handleChange} value={keyWord} type='text' placeholder=" 'internet explorer' " id="query"/>
                 <button  className="search-button">Search</button>
              

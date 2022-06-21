@@ -60,11 +60,12 @@ const  [saved, setSaved]=useState({});
                                 <div className="image-container">
                                     {/* If there is no image, add a palceholder image from the assets folder */}
                                     {
-                                        item.image
+                                        !item.image || item.image==="None"
                                         ?
-                                        <a href={item.url}><img src={item.image} alt={item.title}/></a>
-                                        :
                                         <a href={item.url}><img src={image} alt={item.title}/></a>
+                                        :
+                                        <a href={item.url}><img src={item.image} alt={item.title}/></a>
+                                       
                                     } 
                                 </div>
                                 

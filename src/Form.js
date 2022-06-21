@@ -3,7 +3,7 @@ import {useState} from "react";
 const Form = (props)=>{
 
     // set state for the user's input (category)
-    const [userInput, setUserInput]=useState('');
+    const [userInput, setUserInput]=useState('Food');
 
     // set state for the user's keyword search 
     const [keyWord, setKeyWord] = useState ('');
@@ -18,7 +18,7 @@ const Form = (props)=>{
     // Function that will get the user's query and set the state of keyword with that query
     const handleChange=(e)=>{
         e.preventDefault();
-        const querySearch =e.target.value;
+        let querySearch =e.target.value;
         setKeyWord(querySearch);
         
     }

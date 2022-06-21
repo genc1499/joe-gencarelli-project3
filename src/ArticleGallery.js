@@ -1,22 +1,19 @@
 import image from "./assets/images.jpg";
 import firebase from "./firebase.js";
-import {getDatabase, onValue, push, ref, remove} from 'firebase/database';
-import {useState, useEffect} from 'react';
+import {getDatabase, push, ref} from 'firebase/database';
+import {useState} from 'react';
 
 
 const ArticleGallery = (props)=>{
 const  [saved, setSaved]=useState({});
 
-const [countA, setCountA]=useState('');
-
-  
     // Function to handle the click event and retrieve the properties for image, url and title
     const handleClick=(e)=>{
     
         // Image Source
         const source =e.target.parentElement.previousSibling.firstChild.innerHTML;
 
-        //Slice image source
+        //Slice image source to isolate the url
         const newSource = source.slice(
         source.indexOf('=') + 2,
         source.lastIndexOf('alt')- 2,);
@@ -38,7 +35,7 @@ const [countA, setCountA]=useState('');
    
         // Set state and push to firebase
         setSaved(articleObject);
-        push(dbRef, articleObject);
+        push(dbRef, saved);
 
      
     }

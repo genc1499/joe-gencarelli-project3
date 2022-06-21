@@ -24,8 +24,6 @@ function App() {
   // Set State for total number of articles saved in read list
   const [totalArticles, setTotalArticles]=useState('');
 
-  const [menu, setMenu]=useState();
-
   useEffect(()=>{
     // This axios call will return articles based off the user's selected category
       axios({  
@@ -40,7 +38,6 @@ function App() {
       })
       .then((response)=>{
         setArticles(response.data.articles);
-        console.log(articles);
       })
 },[])
 
@@ -59,7 +56,6 @@ function App() {
       })
       .then((response)=>{
         setArticles(response.data.articles);
-        console.log(articles);
       })
 },[userParam])
 console.log(articles);
@@ -81,7 +77,6 @@ useEffect(()=>{
     })
     .then((response)=>{
       setArticles(response.data.articles);
-      console.log(articles);
     }) 
    
   }
@@ -127,7 +122,7 @@ useEffect(()=>{
       {/* Route that renders the header, readlist and footer */}
       <Route path ="/myreads" element=
         {<><Header itemsInList={totalArticles}/> 
-        <ReadList  menu={menu}/> 
+        <ReadList/> 
         <TotalArticle passTotal = {getTotalArticles} />
         <Footer/></> }/> 
         

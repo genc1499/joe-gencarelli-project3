@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 import {getDatabase, onValue, ref, remove} from 'firebase/database';
 import {Link} from 'react-router-dom';
 
-const ReadList = (props) =>{
+const ReadList = () =>{
 
     // State for the articles that will be retrieved from firebase
     const [savedArticles, setSavedArticles] = useState(['']);

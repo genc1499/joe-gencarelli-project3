@@ -13,16 +13,14 @@ const Form = (props)=>{
         e.preventDefault();
         setUserInput(e.target.value);
         props.passClick(userInput);
-        console.log(userInput);
     }
 
     // Function that will get the user's query and set the state of keyword with that query
     const handleChange=(e)=>{
         e.preventDefault();
-        console.log(e);
         const querySearch =e.target.value;
         setKeyWord(querySearch);
-        console.log(keyWord);    
+        
     }
 
     // Function that will take the user's query and set the userInput state, passing this value to the passWord function in App.js
@@ -31,13 +29,15 @@ const Form = (props)=>{
         if(keyWord!==""){
             setUserInput(keyWord);
             props.passWord(userInput);
+           
         }
         else{
             // Error handling when the user submits with no query
             alert("Please enter something to search!");
         }    
+        setKeyWord("");
     }
-
+   
     return(
         <div className="form-wrapper">
 
@@ -49,7 +49,9 @@ const Form = (props)=>{
                 <button className ="form-buttons" value ="entertainment" onClick = {handleClick}>Entertainment</button>
                 <button className ="form-buttons" value ="sports" onClick = {handleClick}>Sports</button>
                 <button className ="form-buttons" value ="science" onClick = {handleClick}>Science</button>
-                <input onChange = {handleChange} value={keyWord} type='text' placeholder=" 'internet explorer' "/>
+
+                <label for='query'></label>
+                <input onChange = {handleChange} value={keyWord} type='text' placeholder=" 'internet explorer' " id="query"/>
                 <button  className="search-button">Search</button>
              
             </form>

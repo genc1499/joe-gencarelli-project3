@@ -35,7 +35,7 @@ const [countA, setCountA]=useState('');
             url:link,
             imageSrc:newSource
         }
-
+   
         // Set state and push to firebase
         setSaved(articleObject);
         push(dbRef, articleObject);
@@ -53,7 +53,10 @@ const [countA, setCountA]=useState('');
                         props.article.map((item, index)=>{
                     
                             return(
-                            <li key={item.publishedAt}>
+
+                                 // Disclaimer: using a different value for key has consistently thrown me erros with no resolution. Although not my first choice, index will be used as the key value (shrug emoji)
+
+                            <li key={index}>
                               
                                 <h3>{item.title}</h3>
 

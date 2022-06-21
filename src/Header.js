@@ -1,6 +1,6 @@
 import image from "./assets/globe-modified.png";
 import {useState, useEffect} from 'react';
-import {Link, Outlet} from "react-router-dom";
+import {Link} from "react-router-dom";
 const Header = (props) =>{
     // set state for today's date
     const [date, setdate]= useState (['']);
@@ -27,23 +27,17 @@ const Header = (props) =>{
                 <nav>
                     <ul>
                      
-                        <li>
-                        <Link to = '/' >here
-                        </Link>
-
-                        </li>
-              
-                    
+                     
                         <li> 
-                         <Link to = "/myread" >
-                            
-                             My<span className="nav-span">reads</span>
-                            <div className="total-articles">
-                                {props.itemsInList}
-                                </div> 
+                            <Link to = "/myreads" >
                                 
-                              
-                               </Link>
+                                My<span className="nav-span">reads</span>
+                                <div className="total-articles">
+                                    {props.itemsInList}
+                                </div> 
+                                    
+                                
+                            </Link>
                             
                            
                         </li>
@@ -51,7 +45,7 @@ const Header = (props) =>{
                     </ul>
                  
                 </nav>
-                <Outlet/>
+             
                 <div className="heading-container">
                     <h1>Your <span className="daily-span">Extra</span></h1>
                     <h2>{date[0]}  <span className="date-span">{date[1]}</span></h2>

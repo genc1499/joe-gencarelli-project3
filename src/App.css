@@ -27,6 +27,7 @@ ul{
 
 a{
   text-decoration: none;
+  color:#28282b;
 }
 
 .daily-span{
@@ -40,7 +41,6 @@ header{
   height: 237px;
   margin-top:5%;
   position:relative;
-  z-index:-10;
   background-image: linear-gradient(rgb(94, 22, 22), rgb(172, 42, 42));
 
 }
@@ -50,7 +50,7 @@ header{
   position: absolute;
   top: 19px;
   left: 148px;
-  z-index: -1;
+  z-index: 10;
   width: 76%;
 }
 .heading-container{
@@ -60,6 +60,7 @@ header{
   flex-direction: column;
   position:relative;
   margin-top: 21px;
+
 }
 
 h1{
@@ -67,6 +68,7 @@ h1{
   font-family: 'Copse', serif;
   margin:0;
   font-weight:bolder;
+  z-index:1000;
 }
 
 h2{
@@ -90,6 +92,7 @@ h3{
 }
 nav{
   margin-top: 12px;
+  z-index:100;
 }
 
 nav ul{
@@ -104,6 +107,10 @@ nav ul li{
   font-size:1.3rem;
   color:white;
   position:relative;
+}
+
+nav a{
+  color:white;
 }
 
 .total-articles{
@@ -148,6 +155,8 @@ img{
   background-color:rgb(234, 242, 246);
   border-radius:5px;
   padding:40px 20px;
+  margin-bottom: 60px;
+  min-height:400px;
 }
 
 .article-list li{
@@ -198,6 +207,12 @@ img{
   flex-grow:1;
 }
 
+.empty-list-heading{
+  font-size:2rem;
+  text-align:center;
+  color:rgb(13, 143, 237);
+}
+
 
 /* Form component styles */
 
@@ -211,8 +226,6 @@ img{
   display:flex;
   margin-bottom:5%;
   background-color: #28282B;
- 
-
 }
 
 .form-buttons, .search-button{
@@ -255,17 +268,42 @@ input{
   margin-left:5px;
 }
 
-/* Slide out menu */
-.open{
-  width:100vw;
-  height:100vh;
-  transition:.3s ease-in;
+label{
+  visibility: none;
+  position:absolute;
 }
 
-.closed{
-  width:0;
-  height:0;
+/* Read List styles */
+.back-to-news{
+  text-decoration: none;
+  font-size:1.2rem;
+  font-style:italic;
 }
+/* Footer Styles */
+footer{
+  background-color:rgb(172, 42, 42);
+  padding:20px 0;
+  background-image: linear-gradient(rgb(172, 42, 42),rgb(94, 22, 22));
+  
+}
+
+footer p{
+  margin:0 auto;
+  text-align:center;
+  font-size:1rem;
+  font-family:'Varela Round', sans-serif; 
+  color:white;
+  line-height: 31.2px;
+}
+
+footer a{
+  color:white;
+}
+.footer-span{
+  font-weight:bold;
+  font-size:1.2rem;
+}
+
 
 /* MEDIA QUERIES */
 
@@ -298,27 +336,6 @@ input{
   }
 }
 
-/* Footer Styles */
-footer{
-  background-color:rgb(219, 84, 84);
-  padding:20px 0;
-  
-}
-
-footer p{
-  margin:0 auto;
-  text-align:center;
-  font-size:1rem;
-  font-family:'Varela Round', sans-serif; 
-  color:#28282b;
-}
-
-footer a{
-  color:#28282b;
-}
-.footer-span{
-  font-weight:bold;
-}
 
 @media screen and (max-width: 378px){
   .header-nav{

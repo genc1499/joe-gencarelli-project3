@@ -3,15 +3,16 @@ import firebase from "./firebase.js";
 import {getDatabase, onValue, push, ref, remove} from 'firebase/database';
 import {useState, useEffect} from 'react';
 
+
 const ArticleGallery = (props)=>{
 const  [saved, setSaved]=useState({});
+
+const [countA, setCountA]=useState('');
 
   
     // Function to handle the click event and retrieve the properties for image, url and title
     const handleClick=(e)=>{
-        console.log(e);
-        console.log();
-
+    
         // Image Source
         const source =e.target.parentElement.previousSibling.firstChild.innerHTML;
 
@@ -23,7 +24,6 @@ const  [saved, setSaved]=useState({});
          // url property  
         const link= e.target.parentElement.previousSibling.firstChild.href;
       
-            console.log(newSource);
         // h3 property 
         const articleTitle=e.target.parentElement.previousSibling.previousSibling.innerText;
         const database=getDatabase(firebase);
@@ -39,9 +39,10 @@ const  [saved, setSaved]=useState({});
         // Set state and push to firebase
         setSaved(articleObject);
         push(dbRef, articleObject);
-        
+
+     
     }
-   
+
     return(
         <section>
             < div className="wrapper">
@@ -53,6 +54,7 @@ const  [saved, setSaved]=useState({});
                     
                             return(
                             <li key={item.publishedAt}>
+                              
                                 <h3>{item.title}</h3>
 
                                 <div className="image-container">

@@ -9,7 +9,7 @@ import axios from 'axios';
 import firebase from "./firebase.js";
 import {getDatabase, onValue, ref} from 'firebase/database';
 
-import {BrowserRouter as Router,Link, Route, Routes} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 
 function App() {
 
@@ -111,29 +111,26 @@ console.log(articles);
     
   }
 
-  // const displayMenu=(menuStatus)=>{
- 
-  //   setMenu(menuStatus);
-  //   console.log(menuStatus)
-  //   getMenu={displayMenu} 
-  // }
-
 
   return (
     <>
+        <Routes>
+          <Route path ="/" element = {<>    <Header itemsInList={totalArticles}/>    <Form passClick={getParameters} passWord = {getKeyWord}/>   <ArticleGallery article={articles} /> <ReadList passTotal = {getTotalArticles} menu={menu}/></>}/>
+          <Route path ="/myread" element={<><Header itemsInList={totalArticles}/> <ReadList passTotal = {getTotalArticles} menu={menu}/> </> }/> 
+        </Routes>
         {/* State props passed to Header to render total number of articles in read list */}
-        <Header itemsInList={totalArticles}/> 
+        {/* <Header itemsInList={totalArticles}/> 
         {/* Functions passed as props: i. to get the category || ii. to get the query */}
-        <Form passClick={getParameters} passWord = {getKeyWord}/>
+        {/* <Form passClick={getParameters} passWord = {getKeyWord}/> */}
         {/* Articles in state passed as props to be rendered */}
-        <ArticleGallery article={articles}  />
+        {/* <ArticleGallery article={articles}  /> */}
         {/* Prop function that will get the number of articles in read list */}
 
         
-         <ReadList passTotal = {getTotalArticles} menu={menu}/> 
+         {/* <ReadList passTotal = {getTotalArticles} menu={menu}/>  */}
         
 
-       <Footer/>
+       {/* <Footer/>  */}
       
     </>
   );

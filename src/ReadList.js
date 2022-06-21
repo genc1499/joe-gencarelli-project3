@@ -38,7 +38,7 @@ const ReadList = () =>{
     
         })
   
-    }, [savedArticles])
+    }, [])
 //  Was empty
    
     // Remove the article from the read list - on the user's click

@@ -5,8 +5,6 @@ const Header = (props) =>{
     // set state for today's date
     const [date, setdate]= useState (['']);
 
-    const [menu, setMenu]=useState(false);
-
     // Get todays date
     const newDate = new Date();
 
@@ -18,7 +16,7 @@ const Header = (props) =>{
     useEffect(()=>{
         setdate([month,day])
     },[])
-
+// was empty
     return(
    
         <header>

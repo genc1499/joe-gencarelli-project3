@@ -2,7 +2,7 @@ import {useState} from "react";
 
 const Form = (props)=>{
 
-    // set state for the user's input
+    // set state for the user's input (category)
     const [userInput, setUserInput]=useState('');
 
     // set state for the user's keyword search 
@@ -34,7 +34,8 @@ const Form = (props)=>{
         else{
             // Error handling when the user submits with no query
             alert("Please enter something to search!");
-        }    
+        } 
+        // Reset input value   
         setKeyWord("");
     }
    

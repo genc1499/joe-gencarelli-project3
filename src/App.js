@@ -24,63 +24,60 @@ function App() {
   // Set State for total number of articles saved in read list
   const [totalArticles, setTotalArticles]=useState('');
 
-  useEffect(()=>{
-    // This axios call will return articles based off the user's selected category
-      axios({  
-        url:'https://newsapi.org/v2/top-headlines',
-        params:{
-          apiKey:`3363e4832d3b405bb63c8f7d36bed089`,
-          // apiKey:`f0bc24af32704001825c36b936a00399`,
-          // apiKey:`003c61e24d984980b28d21992dec6d0f`,
-          country:'us',
-          category:'top'
-        }
-      })
-      .then((response)=>{
-        setArticles(response.data.articles);
-      })
-},[])
+//   useEffect(()=>{
+//     // This axios call will return articles based off the user's selected category
+//       axios({  
+//         url:`https://api.currentsapi.services/v1/latest-news`,
+//         params:{
+//           apiKey:`WYB2g_IF3u2aTOW2WjDYQeTFuJl84VJ04t4jq7941IFdVNfv`,
+//           language:'en',
+//           category:'top',
+//         }
+//       })
+//       .then((response)=>{
+//         setArticles(response.data.news);
+//       })
+//       // was empty
+// },[])
 
 //useEffect for when the user makes a selection triggering the paramters state to change
   useEffect(()=>{
     // This axios call will return articles based off the user's selected category
       axios({  
-        url:'https://newsapi.org/v2/top-headlines',
+        url:`https://api.currentsapi.services/v1/latest-news`,
         params:{
-          apiKey:`3363e4832d3b405bb63c8f7d36bed089`,
-          // apiKey:`f0bc24af32704001825c36b936a00399`,
-          // apiKey:`003c61e24d984980b28d21992dec6d0f`,
-          country:'us',
-          category:userParam
+            apiKey:`WYB2g_IF3u2aTOW2WjDYQeTFuJl84VJ04t4jq7941IFdVNfv`,
+            language:'en',
+            category:userParam
         }
       })
       .then((response)=>{
-        setArticles(response.data.articles);
+      setArticles(response.data.news);
       })
 },[userParam])
-console.log(articles);
 
-useEffect(()=>{
-  if(keyword!=='')
-  {
-  // This axios call uses different paramters than category searching
-  // This call is made by a change in the keyword state
-    axios({  
-      url:'https://newsapi.org/v2/everything',
-      params:{
-        apiKey:`3363e4832d3b405bb63c8f7d36bed089`,
-        // apiKey:`f0bc24af32704001825c36b936a00399`,
-        language:'en',
-        q:keyword,
-        sortBy:'publishedAt'
-      }
-    })
-    .then((response)=>{
-      setArticles(response.data.articles);
-    }) 
+
+// useEffect(()=>{
+//   if(keyword!=='')
+//   {
+//   // This axios call uses different paramters than category searching
+//   // This call is made by a change in the keyword state
+//     axios({  
+//       url:'https://newsapi.org/v2/everything',
+//       params:{
+//         apiKey:`3363e4832d3b405bb63c8f7d36bed089`,
+//         // apiKey:`f0bc24af32704001825c36b936a00399`,
+//         language:'en',
+//         q:keyword,
+//         sortBy:'publishedAt'
+//       }
+//     })
+//     .then((response)=>{
+//       setArticles(response.data.articles);
+//     }) 
    
-  }
-},[keyword])
+//   }
+// },[keyword])
   
 
 

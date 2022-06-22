@@ -1,7 +1,7 @@
 import image from "./assets/images.jpg";
 import firebase from "./firebase.js";
 import {getDatabase, push, ref} from 'firebase/database';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 
 const ArticleGallery = (props)=>{
@@ -36,9 +36,13 @@ const  [saved, setSaved]=useState({});
    
         // Set state and push to firebase
         setSaved(articleObject);
-        push(dbRef, saved);
-         
+        push(dbRef, saved);        
+     
+        
     }
+    useEffect(()=>{
+        props.getArticleNumber(saved);
+    },[saved])
 
     return(
         <section>

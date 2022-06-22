@@ -4,10 +4,10 @@ import Form from "./Form.js";
 import ArticleGallery from "./ArticleGallery";
 import ReadList from './ReadList.js';
 import Footer from './Footer.js';
+import firebase from "./firebase.js";
 import {useState, useEffect} from 'react';
 import axios from 'axios';
-import TotalArticle from './TotalArticle.js';
-
+import {getDatabase, onValue, ref} from 'firebase/database';
 import {Routes, Route} from 'react-router-dom';
 
 function App() {
@@ -22,8 +22,12 @@ function App() {
   const [keyword, setKeyWord] = useState ('');
 
   // Set State for total number of articles saved in read list
-  const [totalArticles, setTotalArticles]=useState('');
+  // const [totalArticles, setTotalArticles]=useState('');
 
+  const [totalArticles, setTotalArticles]=useState("");
+
+  // State that will render number of articles in newpaper icon (shopping cart)
+  const [displayNumber, setDisplayNumber]= useState('');
 
 //useEffect for when the user makes a selection triggering the paramters state to change
   useEffect(()=>{
@@ -70,6 +74,43 @@ useEffect(()=>{
    
   }
 },[keyword])
+
+useEffect(() => {
+  
+  const database = getDatabase(firebase)
+  const dbRef = ref(database)
+  
+
+  // use the OnValue to return what objects are stored in the database currently
+  onValue(dbRef, (response) => {
+
+      //Store the response object from OnValue in a variable 
+      const data=response.val();
+   
+      // Variable to Keep track of total amount of articles in state
+      let count=0;
+
+
+      // Using a for in loop:
+      // push the object properties + the key property (equal to the object's firebase code)
+      for(let article in data){
+   
+          count+=1;
+       
+      }
+    
+      // Set state for the objects stored in firebase, which will be mapped over below for rendering
+    
+      setTotalArticles(count)
+
+      // props.passTotal(totalArticles);
+  })
+
+   //Pass the totalArticles state to app.js to render the current number of articles in the readlist
+
+  
+}, [displayNumber])
+
   
 
 
@@ -88,17 +129,10 @@ useEffect(()=>{
     setKeyWord(search);  
   }
 
-  // Function that will get the total number of articles in read list from a prop function
-  // state props will then be sent to header to render this number
-
-  const getTotalArticles=(total)=>{
-
-    // Convert total to string so state can set
-    const modTotal = total.toString();
-    setTotalArticles(modTotal);
-    
+//  State from ArticleGallery.js that tracks changes in the articles saved in read list
+  const getTotalArticles = (totalA) =>{
+    setDisplayNumber(totalA);
   }
-
 
   return (
     <>
@@ -108,15 +142,15 @@ useEffect(()=>{
       <Route path ="/" element = {
         <> <Header itemsInList={totalArticles}/> 
         <Form passClick={getParameters} passWord = {getKeyWord}/> 
-        <ArticleGallery article={articles} /> 
-        <TotalArticle passTotal = {getTotalArticles} /> 
+        <ArticleGallery article={articles} getArticleNumber={getTotalArticles}/> 
+    
         <Footer/> </> }/>
 
       {/* Route that renders the header, readlist and footer */}
       <Route path ="/myreads" element=
         {<><Header itemsInList={totalArticles}/> 
         <ReadList/> 
-        <TotalArticle passTotal = {getTotalArticles} />
+       
         <Footer/></> }/> 
         
     </Routes>

@@ -7,8 +7,7 @@ const ReadList = () =>{
 
     // State for the articles that will be retrieved from firebase
     const [savedArticles, setSavedArticles] = useState(['']);
-
-
+   
     useEffect(() => {
   
         const database = getDatabase(firebase)
@@ -27,17 +26,18 @@ const ReadList = () =>{
             // Using a for in loop:
             // push the object properties + the key property (equal to the object's firebase code)
             for(let article in data){
-                
+        
                 const articleObject = {key:article, title:data[article].title, url:data[article].url, imageSrc:data[article].imageSrc}
-            
+          
                 // Push articles to array
                 list.push(articleObject);
-                
+              
                 }
-            
+                
             // Set state for the objects stored in firebase, which will be mapped over below for rendering
             setSavedArticles(list);
-    
+           
+           
         })
   
     }, [])

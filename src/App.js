@@ -18,14 +18,13 @@ function App() {
   // Set state for the user's parameters, which dictate the category of article to render 
   const [userParam, setUserParam] = useState(['']);
 
-  // Set state for when the user searches by keyword
-  const [keyword, setKeyWord] = useState ('');
 
   // Set State for total number of articles saved in read list
   const [totalArticles, setTotalArticles]=useState("");
 
   // State that will render number of articles in newspaper icon ('shopping cart')
   const [displayNumber, setDisplayNumber]= useState('');
+
 
 //useEffect for when the user makes a selection triggering the paramters state to change
   useEffect(()=>{
@@ -41,38 +40,15 @@ function App() {
         }
       })
 
-      .then((response)=>{
+      .then((response)=>{  
       setArticles(response.data.news);
+       
       })
      .catch(error => {
-        console.log(error.response.data.error)
+        alert("No articles here!");
      })
-
+    
 },[userParam])
-
-
-useEffect(()=>{
-  if(keyword!=='')
-  {
-  // This axios call is made based on keyword search
-    axios({  
-      url:`https://api.currentsapi.services/v1/search`,
-      params:{
-        apiKey:`WYB2g_IF3u2aTOW2WjDYQeTFuJl84VJ04t4jq7941IFdVNfv`,
-        language:'en',
-        keywords:keyword 
-      }
-    })
-    .then((response)=>{
-      setArticles(response.data.news);
-    }) 
-    .catch(error => {
-      console.log(error.response.data.error)
-      alert("No articles here!");
-    })
-   
-  }
-},[keyword])
 
 // Set state for the number of articles in the user's read list, dependant on the state change in ArticleGallery when the user selects an article to save
 useEffect(() => {
@@ -83,7 +59,7 @@ useEffect(() => {
 
   // use the OnValue to return what objects are stored in the database currently
   onValue(dbRef, (response) => {
-
+    
       //Store the response object from OnValue in a variable 
       const data=response.val();
    
@@ -92,29 +68,27 @@ useEffect(() => {
 
       // Using a for in loop, count the number of articles
       for(let article in data){
-   
+       
           count+=1;
+      
        
       }
     
       // Set state for the objects stored in firebase, which will be mapped over below for rendering
       setTotalArticles(count)
+  
   })
 
  
-}, [displayNumber])
+}, [])
 
   // Function that will set the paramters state using the user's input set in state in the form component
   const getParameters = (param) =>{
     setUserParam(param);
   }
 
-  // Function that will set the keyword state using the user's input set in state in the form component
-  const getKeyWord = (search) =>{
-    setKeyWord(search);  
-  }
 
-//  State from ArticleGallery.js that tracks changes in the articles saved in read list
+//  State from ArticleGallery.js that tracks changes in the number of articles saved in read list
   const getTotalArticles = (totalA) =>{
     setDisplayNumber(totalA);
   }
@@ -126,15 +100,15 @@ useEffect(() => {
       {/* Route that renders the header, article gallery and footer */}
       <Route path ="/" element = {
         <> <Header itemsInList={totalArticles}/> 
-        <Form passClick={getParameters} passWord = {getKeyWord}/> 
-        <ArticleGallery article={articles} getArticleNumber={getTotalArticles}/> 
+        <Form passClick={getParameters}/> 
+        <ArticleGallery article={articles} getArticleNumber={getTotalArticles} /> 
     
         <Footer/> </> }/>
 
       {/* Route that renders the header, readlist and footer */}
       <Route path ="/myreads" element=
         {<><Header itemsInList={totalArticles}/> 
-        <ReadList/> 
+        <ReadList /> 
        
         <Footer/></> }/> 
         

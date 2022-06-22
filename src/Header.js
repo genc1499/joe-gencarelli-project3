@@ -2,6 +2,7 @@ import image from "./assets/globe-modified.png";
 import newspaper from "./assets/newsIcon.png";
 import {useState, useEffect} from 'react';
 import {Link} from "react-router-dom";
+
 const Header = (props) =>{
     // set state for today's date
     const [date, setdate]= useState (['']);
@@ -15,13 +16,17 @@ const Header = (props) =>{
 
     // Date should only be rendered once, when the header is mounted
     useEffect(()=>{
+
         setdate([month,day])
+        
     },[])
 
     return(
    
         <header>
-         
+           {/* Anchor tag to skip to main content */}
+            <a href="#main" class="skip-link">Skip to main content.</a>
+
             <div className="header-nav wrapper">
                 <nav>
                     <ul>
@@ -53,7 +58,7 @@ const Header = (props) =>{
                     <h2>{date[0]}  <span className="date-span">{date[1]}</span></h2>
 
                     <div className="earth-image rotate">
-                        <img src={image} alt="Cartoon image of Earth"/>
+                        <img src={image} alt="Dotted image of Earth"/>
                     </div>
                     
                 </div>

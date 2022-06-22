@@ -27,8 +27,10 @@ const ReadList = () =>{
             // Using a for in loop:
             // push the object properties + the key property (equal to the object's firebase code)
             for(let article in data){
+                
                 const articleObject = {key:article, title:data[article].title, url:data[article].url, imageSrc:data[article].imageSrc}
             
+                // Push articles to array
                 list.push(articleObject);
                 
                 }
@@ -39,13 +41,12 @@ const ReadList = () =>{
         })
   
     }, [])
-//  Was empty
+
    
     // Remove the article from the read list - on the user's click
     const handleRemove = (id)=>{
         const database=getDatabase(firebase);
         const dbRef = ref (database, `${id}`);
-        console.log(id);
         remove(dbRef);
     }
     
@@ -61,7 +62,7 @@ const ReadList = () =>{
                 <ul className = "article-list">
                     {
 
-                    // Check if any articles havebeen added
+                    // Check if any articles have been added
                     // If not, display message below
 
                       savedArticles.length===0?
@@ -74,9 +75,7 @@ const ReadList = () =>{
                                 // Disclaimer: using a different value for key has consistently thrown me erros with no resolution. Although not my first choice, index will be used as the key value (shrug emoji)
 
                                 <li key={index}>
-                                    {
-                                        console.log("this key", item.key)
-                                    }
+                                   
                                     <h3 >{item.title}</h3>
                                     <div className="image-container">
                                         <a href={item.url}><img src={item.imageSrc} alt={item.title}/></a> 

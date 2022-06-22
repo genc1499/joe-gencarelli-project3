@@ -1,6 +1,5 @@
 import image from "./assets/globe-modified.png";
 import newspaper from "./assets/newsIcon.png";
-
 import {useState, useEffect} from 'react';
 import {Link} from "react-router-dom";
 const Header = (props) =>{
@@ -18,7 +17,7 @@ const Header = (props) =>{
     useEffect(()=>{
         setdate([month,day])
     },[])
-// was empty
+
     return(
    
         <header>
@@ -38,10 +37,8 @@ const Header = (props) =>{
                                 <div className="total-articles">
                                     {props.itemsInList}
                                 </div> 
-                                    
-                                
-                            </Link>
-                            
+                                      
+                            </Link>  
                            
                         </li>
                
@@ -51,10 +48,14 @@ const Header = (props) =>{
              
                 <div className="heading-container">
                     <h1>Your <span className="daily-span">Extra</span></h1>
+
+                    {/* Render today's date here */}
                     <h2>{date[0]}  <span className="date-span">{date[1]}</span></h2>
+
                     <div className="earth-image rotate">
                         <img src={image} alt="Cartoon image of Earth"/>
                     </div>
+                    
                 </div>
             </div>
         </header>

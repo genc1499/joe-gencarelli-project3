@@ -5,12 +5,15 @@ import {useEffect, useState} from 'react';
 
 
 const ArticleGallery = (props)=>{
-const  [saved, setSaved]=useState({});
+
+    // State for tracking the articles in the user's read list
+    const  [saved, setSaved]=useState({});
 
 
     // Function to handle the click event and retrieve the properties for image, url and title
     const handleClick=(e)=>{
         alert("Article Added");
+
         // Image Source
         const source =e.target.parentElement.previousSibling.firstChild.innerHTML;
 
@@ -37,14 +40,16 @@ const  [saved, setSaved]=useState({});
         // Set state and push to firebase
         setSaved(articleObject);
         push(dbRef, saved);        
-     
         
     }
+
+    // Once state changes when articles are added, pass that state to App.js to render the count
     useEffect(()=>{
         props.getArticleNumber(saved);
     },[saved])
 
     return(
+
         <section>
       
             < div className="wrapper">
@@ -71,10 +76,7 @@ const  [saved, setSaved]=useState({});
                                         <a href={item.url}><img src={image} alt={item.title}/></a>
                                         :
                                         <a href={item.url}><img src={item.image} alt={item.title}/></a>
-                                        
-                                      
-           
-                                       
+                                     
                                     } 
                                 </div>
                                 

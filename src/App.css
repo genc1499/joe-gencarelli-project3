@@ -8,17 +8,13 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
-
-/* @import url('https://fonts.googleapis.com/css?family=Varela+Round');
-@import url('https://fonts.googleapis.com/css?family=Copse+Serif');
-@import url('https://fonts.googleapis.com/css?family=Kdam+Thmor+Pro'); */
-
 /* Header styles */
 
 /* Chnage display on spans so the headings appear vertically */
 html{
   font-size:125%;
   font-family: 'Varela Round', sans-serif;
+  overflow-x: hidden;
 }
 ul{
   list-style:none;
@@ -51,7 +47,39 @@ header{
   left: 149px;
   z-index: 10;
   width: 76%;
+
 }
+
+.earth-image img{
+
+  animation: rotation infinite 4s linear;
+}
+
+/* .earth-image{
+  transform-style: preserve-3d;
+  transform: rotateX(-40deg) rotateY(32deg);
+perspective: 1000px;
+}
+.earth-image img{
+    width:882px;
+      height: 561px;
+      box-shadow: rem(-20) rem(20) rem(80) 0 rgba(0, 0, 0, 0.15),
+                  rem(-20) rem(20) rem(80) 0  rgba(0, 0, 0, 0.15) ;
+   transform: rotateX( 90deg)  translateZ(1em);
+} */
+
+
+/* @keyframes rotation{
+  
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(359deg);
+  }
+} */
+ 
+ 
 .heading-container{
   display:flex;
   color:white;
@@ -86,6 +114,23 @@ h3{
   flex-direction:row-reverse;
 }
 /* Nav section */
+
+.link-image{
+  margin-left: 31%;
+  margin-top: -19px;
+  width: 115px;
+  position:relative;
+  transition:.3s linear;
+}
+
+.link-image:hover, .link-image:focus{
+  scale:1.2;
+}
+
+.link-image:hover .total-articles, .link-image:focus .total-articles{
+  scale:1.3;
+}
+
 .nav-span{
   display:block;
 }
@@ -119,11 +164,13 @@ nav a{
   text-align: center;
   font-size: 1rem;
   position: absolute;
-  top: 3px;
-  right: 0px;
+  top: 4px;
+  right: -7px;
   width: 24px;
   height: 24px;
-
+  border:2px solid black;
+  font-style:bold;
+  transition:.3s linear
 }
 
 .back-to-news{
@@ -208,10 +255,11 @@ img{
   font-style: bold;
   font-family: 'Varela Round', sans-serif;
   margin-top:5%;
+  transition:.3s linear
 }
 
 .read-after:hover, .read-after:focus{
-  width:155px;
+  scale:1.1;
   box-shadow:0px 10px 13px -7px #000000;
 }
 
@@ -294,6 +342,12 @@ label{
   text-decoration: none;
   font-size:1.2rem;
   font-style:italic;
+  transition:.3s linear;
+}
+
+.back-to-news:hover, .back-to-news:focus{
+  scale:1.2;
+  box-shadow:0px 10px 13px -7px #000000;
 }
 /* Footer Styles */
 footer{
@@ -322,8 +376,12 @@ footer a{
 
 
 /* MEDIA QUERIES */
-
-
+@media screen and (max-width: 1090px)
+{
+  .article-list li{
+    width:45%;
+  }
+}
   
 @media screen and (max-width: 950px){
   .categories{
@@ -334,6 +392,16 @@ input{
   flex-grow:0;
   margin-left:29%;
 }
+}
+
+@media screen and (max-width: 705px){
+  .article-list{
+    flex-direction:column;
+  }
+
+  .article-list li{
+    width:100%;
+  }
 }
 
 @media screen and (max-width: 684px){
@@ -353,9 +421,13 @@ input{
 }
 
 
-@media screen and (max-width: 378px){
+@media screen and (max-width: 465px){
   .header-nav{
     justify-content:flex-end;
+  }
+
+  .link-image{
+    margin-top: -34px;
   }
 
   nav ul li{
@@ -366,5 +438,14 @@ input{
 
   nav{
     margin-top:0;
+  }
+}
+
+
+@media screen and (max-width: 380px){
+  nav ul li{
+    right: 133px;
+    font-style: bold;
+    top: 161px;
   }
 }

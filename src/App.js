@@ -40,6 +40,9 @@ function App() {
       .then((response)=>{
       setArticles(response.data.news);
       })
+     .catch(error => {
+        console.log(error.response.data.error)
+     })
 },[userParam])
 
 
@@ -60,6 +63,10 @@ useEffect(()=>{
     .then((response)=>{
       setArticles(response.data.news);
     }) 
+    .catch(error => {
+      console.log(error.response.data.error)
+      alert("No articles here!");
+    })
    
   }
 },[keyword])

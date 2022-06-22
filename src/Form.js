@@ -3,7 +3,7 @@ import {useState} from "react";
 const Form = (props)=>{
 
     // set state for the user's input (category)
-    const [userInput, setUserInput]=useState('Food');
+    const [userInput, setUserInput]=useState('');
 
     // set state for the user's keyword search 
     const [keyWord, setKeyWord] = useState ('');

@@ -7,9 +7,10 @@ import {useState} from 'react';
 const ArticleGallery = (props)=>{
 const  [saved, setSaved]=useState({});
 
+
     // Function to handle the click event and retrieve the properties for image, url and title
     const handleClick=(e)=>{
-    
+        alert("Article Added");
         // Image Source
         const source =e.target.parentElement.previousSibling.firstChild.innerHTML;
 
@@ -36,12 +37,12 @@ const  [saved, setSaved]=useState({});
         // Set state and push to firebase
         setSaved(articleObject);
         push(dbRef, saved);
-
-     
+         
     }
 
     return(
         <section>
+      
             < div className="wrapper">
                 <h2 className="gallery-heading" >Top Stories</h2>
                 <ul className = "article-list">
@@ -58,6 +59,7 @@ const  [saved, setSaved]=useState({});
                                 <h3>{item.title}</h3>
 
                                 <div className="image-container">
+                                      
                                     {/* If there is no image, add a palceholder image from the assets folder */}
                                     {
                                         !item.image || item.image==="None"
@@ -65,6 +67,9 @@ const  [saved, setSaved]=useState({});
                                         <a href={item.url}><img src={image} alt={item.title}/></a>
                                         :
                                         <a href={item.url}><img src={item.image} alt={item.title}/></a>
+                                        
+                                      
+           
                                        
                                     } 
                                 </div>
@@ -74,6 +79,8 @@ const  [saved, setSaved]=useState({});
                                     <button onClick={handleClick}className= "read-after">Read Later</button>
 
                                 </div>
+
+                
                             </li>
                             )
                         })

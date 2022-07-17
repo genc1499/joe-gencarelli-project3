@@ -23,7 +23,7 @@ function App() {
   const [totalArticles, setTotalArticles]=useState("");
 
   // State that will render number of articles in newspaper icon ('shopping cart')
-  const [displayNumber, setDisplayNumber]= useState('');
+  const [displayNumber, setDisplayNumber]= useState(false);
 
 
 //useEffect for when the user makes a selection triggering the paramters state to change
@@ -80,7 +80,7 @@ useEffect(() => {
   })
 
  
-}, [])
+},[displayNumber])
 
   // Function that will set the paramters state using the user's input set in state in the form component
   const getParameters = (param) =>{
@@ -89,8 +89,10 @@ useEffect(() => {
 
 
 //  State from ArticleGallery.js that tracks changes in the number of articles saved in read list
-  const getTotalArticles = (totalA) =>{
-    setDisplayNumber(totalA);
+  const getTotalArticles = () =>{
+
+    setDisplayNumber(!displayNumber);
+
   }
 
   return (
@@ -101,7 +103,7 @@ useEffect(() => {
       <Route path ="/" element = {
         <> <Header itemsInList={totalArticles}/> 
         <Form passClick={getParameters}/> 
-        <ArticleGallery article={articles} getArticleNumber={getTotalArticles} /> 
+        <ArticleGallery article={articles} getArticleNumber={getTotalArticles}  /> 
     
         <Footer/> </> }/>
 
@@ -109,7 +111,6 @@ useEffect(() => {
       <Route path ="/myreads" element=
         {<><Header itemsInList={totalArticles}/> 
         <ReadList /> 
-       
         <Footer/></> }/> 
         
     </Routes>

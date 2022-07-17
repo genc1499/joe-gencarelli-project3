@@ -11,19 +11,24 @@ import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyCaX17zCbKCMf8E6WVSyNcO1GLWnacB0Rs",
 
-  authDomain: "news-app-93434.firebaseapp.com",
 
-  projectId: "news-app-93434",
+    apiKey: "AIzaSyAoaFwf-6DuxGq7_BG0lVqQtd97PyloxOo",
 
-  storageBucket: "news-app-93434.appspot.com",
+    authDomain: "news-app-ff06e.firebaseapp.com",
 
-  messagingSenderId: "260736867004",
+    projectId: "news-app-ff06e",
 
-  appId: "1:260736867004:web:d0cc3fefff782c355b0eb9"
+    storageBucket: "news-app-ff06e.appspot.com",
+
+    messagingSenderId: "538815417708",
+
+    appId: "1:538815417708:web:99ad25f1c38d09964c7749"
 
 };
+
+
+
 
 
 // Initialize Firebase

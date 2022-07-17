@@ -12,10 +12,9 @@ const ArticleGallery = (props)=>{
 
     // Function to handle the click event and retrieve the properties for image, url and title
     const handleClick=(e)=>{
-
+       
         alert("Article Added");
-        
-        console.log(e);
+   
         // Image Source
         const source =e.target.parentElement.previousSibling.firstChild.innerHTML;
 
@@ -38,14 +37,15 @@ const ArticleGallery = (props)=>{
             url:link,
             imageSrc:newSource
         }
-    
+      
         // Set state and push to firebase
         setSaved(articleObject);
-        props.getArticleNumber(saved);   
+        
         push(dbRef, saved);    
 
         // Once state changes when articles are added, pass that state to App.js to render the count
-        
+        // console.log("added");
+        props.getArticleNumber(); 
         
     }
 
